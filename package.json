@@ -1,0 +1,14 @@
+{
+  "name": "team-task-manager",
+  "version": "1.0.0",
+  "description": "Team Task Manager with role-based access",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

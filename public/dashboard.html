@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TaskFlow — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app-layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <h2>⚡ TaskFlow</h2>
+      <span>Team Task Manager</span>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section">
+        <div class="nav-label">Main</div>
+        <div class="nav-item active" data-page="dashboard" onclick="navigate('dashboard')">
+          <span class="icon">📊</span> Dashboard
+        </div>
+        <div class="nav-item" data-page="projects" onclick="navigate('projects')">
+          <span class="icon">📁</span> Projects
+        </div>
+        <div class="nav-item" data-page="my-tasks" onclick="navigate('my-tasks')">
+          <span class="icon">✅</span> My Tasks
+        </div>
+      </div>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="avatar" id="user-avatar">U</div>
+        <div class="user-info">
+          <div class="uname" id="user-name">User</div>
+          <div class="urole" id="user-role">member</div>
+        </div>
+        <button class="logout-btn" onclick="logout()" title="Logout">⏻</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content" id="main-content">
+    <p>Loading...</p>
+  </main>
+</div>
+
+<!-- CREATE PROJECT MODAL -->
+<div class="modal-overlay" id="create-project-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Create New Project</h3>
+      <button class="modal-close" onclick="closeModal('create-project-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Project Name *</label>
+        <input type="text" id="proj-name" placeholder="e.g. Website Redesign" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" id="proj-desc" placeholder="What is this project about?" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('create-project-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="createProject()">Create Project</button>
+    </div>
+  </div>
+</div>
+
+<!-- CREATE TASK MODAL -->
+<div class="modal-overlay" id="create-task-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Create New Task</h3>
+      <button class="modal-close" onclick="closeModal('create-task-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Task Title *</label>
+        <input type="text" id="task-title" placeholder="What needs to be done?" />
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" id="task-desc" placeholder="Optional details..." />
+      </div>
+      <div class="form-group">
+        <label>Assign To</label>
+        <select id="task-assigned">
+          <option value="">Unassigned</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Priority</label>
+        <select id="task-priority">
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
+          <option value="low">Low</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Due Date</label>
+        <input type="date" id="task-due" />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('create-task-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="createTask()">Create Task</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD MEMBER MODAL -->
+<div class="modal-overlay" id="add-member-modal">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Add Team Member</h3>
+      <button class="modal-close" onclick="closeModal('add-member-modal')">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Select User</label>
+        <select id="add-member-user">
+          <option value="">Select user...</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Role in Project</label>
+        <select id="add-member-role">
+          <option value="member">Member</option>
+          <option value="admin">Admin</option>
+        </select>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-ghost" onclick="closeModal('add-member-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="addMember()">Add Member</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
